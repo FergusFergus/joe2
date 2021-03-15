@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HotDog2</title>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        function order() {
+            numHotDogs = document.forms[0].elements[0].value
+            numFries = document.forms[1].elements[0].value
+            numSodas = document.forms[2].elements[0].value
+
+            if ((numHotDogs + numFries + numSodas) == 0) {
+                alert("Error: nothing ordered.")
+            } else {
+                costHotdogs = numHotDogs * 3.25
+                costFries = numFries * 2
+                costSodas = numSodas * 1.5
+
+                total1 = costFries + costSodas + costHotdogs
+                discount = 0
+                total2 = total1
+
+                if (total1 > 20) {
+                    total2 = total1 * 0.9
+                    discount = total1 * 0.1
+                }
+
+                tax = total2 * 0.0625
+                total3 = total2 + tax
+
+                alert("Discount: $" + discount.toFixed(2) + "\n" +
+                      "Tax: $" + tax.toFixed(2) + "\n" +
+                      "Total: $" + total3.toFixed(2))
+            }
+        };
+    </script>
+</head>
+
+
+<body>
+    <h1>Joe's Hotdogs!</h1>
+
+    <p style="font-weight:bold">Menu</p>
+    <table style="width:25%">
+        <tr>
+            <td style="font-weight:bold">Item</th>
+            <td style="font-weight:bold">Price</th>
+        </tr>
+        <tr>
+            <td>Hot dog</td>
+            <td>$3.25</td>
+
+            <td><form id="hotdogForm">
+                <select class="hotdogs">
+                    <option value=0 selected="selected">Quantity</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=10>10</option>
+                    <option value=15>15</option>
+                    <option value=20>20</option>
+                </select>
+            </form></th>
+        </tr>
+        <tr>
+            <td>French Fries</td>
+            <td>$2.00</td>
+            <td><form id="frenchFriesForm">
+                <select class="fries">
+                    <option value=0 selected="selected">Quantity</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=10>10</option>
+                    <option value=15>15</option>
+                    <option value=20>20</option>
+                </select>
+            </form></th>
+        </tr>
+        <tr>
+            <td>Drinks</td>
+            <td>$1.50</td>
+            <td><form id="sodasForm">
+                <select class="sodas">
+                    <option value=0 selected="selected">Quantity</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=10>10</option>
+                    <option value=15>15</option>
+                    <option value=20>20</option>
+                </select>
+            </form></th>
+        </tr>
+    </table>
+
+    <button onclick="order()" class="button" id='submit'>Checkout</button>
+
+</body>
+
+
+</html>
